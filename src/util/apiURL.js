@@ -5,5 +5,5 @@ export const apiURL = () => {
   ) {
     return "http://localhost:3001";
   }
-  return "https://budget-app-jfm.netlify.app/";
+  return "https://budget-app-backend-jfm.herokuapp.com/";
 };
