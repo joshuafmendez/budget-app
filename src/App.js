@@ -36,7 +36,7 @@ const App = () => {
           <Home />
         </Route>
         <Route exact path="/transactions">
-          <Index />
+          <Index transactions={transactions}/>
         </Route>
         <Route exact path="/transactions/new">
           <New />
