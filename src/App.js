@@ -16,6 +16,11 @@ const API = apiURL();
 const App = () => {
   const [transactions, setTransactions] = useState([]);
 
+  // Add a new transaction
+  const addTransaction = () => {
+
+  }
+
   const fetchData = async () => {
     try {
       const res = await axios.get(`${API}/transactions`);
@@ -39,7 +44,7 @@ const App = () => {
           <Index transactions={transactions}/>
         </Route>
         <Route exact path="/transactions/new">
-          <New />
+          <New addTransaction={addTransaction} />
         </Route>
         <Route exact path="/transactions/:index">
           <Show />
