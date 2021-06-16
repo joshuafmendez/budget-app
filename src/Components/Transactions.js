@@ -3,9 +3,9 @@ import Transaction from "./Transaction";
 const Transactions = ({ transactions }) => {
   return (
     <ul>
-      {transactions.map((transaction, index) => {
+      {transactions.map((transaction) => {
         return (
-          <Transaction key={index} transaction={transaction} index={index} />
+          <Transaction key={transaction.id} transaction={transaction}/>
         );
       })}
     </ul>

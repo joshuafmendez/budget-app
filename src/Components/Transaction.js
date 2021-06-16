@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-const Transaction = ({ transaction, index }) => {
+const Transaction = ({ transaction }) => {
   return (
     <li>
-      <Link to={`/transactions/${index}`}>{transaction.date} {transaction.name} {transaction.amount}</Link>
+      <Link to={`/transactions/${transaction.id}`}>{transaction.date} {transaction.name} {transaction.amount}</Link>
     </li>
   );
 };
