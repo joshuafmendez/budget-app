@@ -1,5 +1,5 @@
 import "./App.css";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import FoF from "./Pages/FoF";
 import Home from "./Pages/Home";
@@ -51,7 +51,6 @@ const App = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
   return (
     <div className="App">
       <NavBar />
