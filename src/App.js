@@ -40,6 +40,18 @@ const App = () => {
     }
   };
 
+  // Update a specific transaction
+  const updateTransaction = async (updatedTrans, index) => {
+    try {
+      await axios.put(`${API}/transactions/${index}`, updatedTrans);
+      const editedTrans = [...transactions];
+      editedTrans[index] = updatedTrans;
+      setTransactions(editedTrans);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const fetchData = async () => {
     try {
       const res = await axios.get(`${API}/transactions`);
@@ -65,10 +77,10 @@ const App = () => {
           <New addTransaction={addTransaction} />
         </Route>
         <Route exact path="/transactions/:index">
-          <Show deleteTransaction={deleteTransaction}/>
+          <Show deleteTransaction={deleteTransaction} />
         </Route>
         <Route exact path="/transactions/:index/edit">
-          <Edit />
+          <Edit updateTransaction={updateTransaction}/>
         </Route>
         <Route path="*">
           <FoF />

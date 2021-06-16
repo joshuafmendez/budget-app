@@ -1,17 +1,19 @@
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { apiURL } from "../util/apiURL";
 
-import uuid from "react-uuid";
+const API = apiURL();
 
-const TransNewForm = (props) => {
+const TransEditForm = ({ updateTransaction }) => {
+  let { index } = useParams();
   let history = useHistory();
   const [transaction, setTransaction] = useState({
-    id: uuid(),
     from: "",
     date: "",
     name: "",
     amount: 0,
-    notes: ""
+    notes: "",
   });
 
   const handleTextChange = (e) => {
@@ -22,15 +24,28 @@ const TransNewForm = (props) => {
     setTransaction({ ...transaction, amount: Number(e.target.value) });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    props.addTransaction(transaction);
-    history.push("/transactions");
+    await updateTransaction(transaction, index);
+    history.push(`/transactions/${index}`);
   };
+
+  useEffect(() => {
+    const fetchTrans = async () => {
+      try {
+        const res = await axios.get(`${API}/transactions/${index}`);
+        setTransaction(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchTrans();
+  }, [index]);
+
   return (
-    <div className="New">
+    <div className="Edit">
       <form onSubmit={handleSubmit}>
-      <label htmlFor="from">From</label>
+        <label htmlFor="from">From</label>
         <input
           id="from"
           type="text"
@@ -82,4 +97,4 @@ const TransNewForm = (props) => {
   );
 };
 
-export default TransNewForm;
+export default TransEditForm;
