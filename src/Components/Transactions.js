@@ -2,13 +2,17 @@ import Transaction from "./Transaction";
 
 const Transactions = ({ transactions }) => {
   return (
-    <ul>
-      {transactions.map((transaction,index) => {
+    <table>
+      {transactions.map((transaction, index) => {
         return (
-          <Transaction key={transaction.id} transaction={transaction} index={index}/>
+          <Transaction
+            key={transaction.id}
+            transaction={transaction}
+            index={index}
+          />
         );
       })}
-    </ul>
+    </table>
   );
 };
 
