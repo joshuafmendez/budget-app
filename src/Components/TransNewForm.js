@@ -48,6 +48,7 @@ const TransNewForm = (props) => {
           onChange={handleTextChange}
           placeholder="DD/MM/YYYY"
           required
+          pattern="\d{4}-\d{2}-\d{2}"
         />
         <label htmlFor="name">Name</label>
         <input
