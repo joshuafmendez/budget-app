@@ -1,10 +1,10 @@
 import TransDetail from "../Components/TransDetail";
 
-const Show = () => {
+const Show = ({deleteTransaction}) => {
   return (
     <section>
       <h1>Show</h1>
-      <TransDetail />
+      <TransDetail deleteTransaction={deleteTransaction}/>
     </section>
   );
 };

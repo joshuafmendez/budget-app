@@ -28,6 +28,18 @@ const App = () => {
     }
   };
 
+  // Deletes a specific transaction
+  const deleteTransaction = async (index) => {
+    try {
+      await axios.delete(`${API}/transactions/${index}`);
+      const newTransaction = [...transactions];
+      newTransaction.splice(index, 1);
+      setTransactions(newTransaction);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const fetchData = async () => {
     try {
       const res = await axios.get(`${API}/transactions`);
@@ -54,7 +66,7 @@ const App = () => {
           <New addTransaction={addTransaction} />
         </Route>
         <Route exact path="/transactions/:index">
-          <Show />
+          <Show deleteTransaction={deleteTransaction}/>
         </Route>
         <Route exact path="/transactions/:index/edit">
           <Edit />
