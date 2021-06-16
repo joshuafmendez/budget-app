@@ -17,14 +17,21 @@ const App = () => {
   const [transactions, setTransactions] = useState([]);
 
   // Add a new transaction
-  const addTransaction = () => {
-
-  }
+  const addTransaction = async (newTransaction) => {
+    try {
+      const res = await axios.post(`${API}/transactions`, newTransaction);
+      setTransactions((prevTransaction) => {
+        return [...prevTransaction, res.data];
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const fetchData = async () => {
     try {
       const res = await axios.get(`${API}/transactions`);
-      setTransactions(res.data)
+      setTransactions(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -41,7 +48,7 @@ const App = () => {
           <Home />
         </Route>
         <Route exact path="/transactions">
-          <Index transactions={transactions}/>
+          <Index transactions={transactions} />
         </Route>
         <Route exact path="/transactions/new">
           <New addTransaction={addTransaction} />
