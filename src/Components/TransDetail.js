@@ -14,7 +14,7 @@ const TransDetail = ({ deleteTransaction }) => {
   useEffect(() => {
     const fetchTrans = async () => {
       try {
-        const res = await axios.get(`${API}/Transactions/${index}`);
+        const res = await axios.get(`${API}/transactions/${index}`);
         setTransaction(res.data);
       } catch (err) {
         console.log(err);
@@ -29,7 +29,6 @@ const TransDetail = ({ deleteTransaction }) => {
   };
   return (
     <section>
-      Details
       <div>
         <Link to={`/transactions`}>
           <button>Back</button>
@@ -38,6 +37,10 @@ const TransDetail = ({ deleteTransaction }) => {
           <button>Edit</button>
         </Link>
         <button onClick={handleDelete}>Delete</button>
+      </div>
+      <div>
+        {transaction.date} {transaction.name} {transaction.amount}{" "}
+        {transaction.from} {transaction.notes}
       </div>
     </section>
   );

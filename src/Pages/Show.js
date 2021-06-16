@@ -3,7 +3,7 @@ import TransDetail from "../Components/TransDetail";
 const Show = ({deleteTransaction}) => {
   return (
     <section>
-      <h1>Show</h1>
+      <h1>Transaction Details</h1>
       <TransDetail deleteTransaction={deleteTransaction}/>
     </section>
   );
