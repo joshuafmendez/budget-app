@@ -29,11 +29,11 @@ const App = () => {
   };
 
   // Deletes a specific transaction
-  const deleteTransaction = async (index) => {
+  const deleteTransaction = async (transID) => {
     try {
-      await axios.delete(`${API}/transactions/${index}`);
+      await axios.delete(`${API}/transactions/${transID}`);
       const newTransaction = [...transactions];
-      newTransaction.splice(index, 1);
+      newTransaction.splice(transID, 1);
       setTransactions(newTransaction);
     } catch (err) {
       console.log(err);

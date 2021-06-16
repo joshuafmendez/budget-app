@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { apiURL } from "../util/apiURL";
 
@@ -8,23 +8,22 @@ const API = apiURL();
 
 const TransDetail = ({ deleteTransaction }) => {
   const [transaction, setTransaction] = useState({});
-  const { index } = useParams();
   let history = useHistory();
 
   useEffect(() => {
     const fetchTrans = async () => {
       try {
-        const res = await axios.get(`${API}/transactions/${index}`);
+        const res = await axios.get(`${API}/transactions/${transaction.id}`);
         setTransaction(res.data);
       } catch (err) {
         console.log(err);
       }
     };
     fetchTrans();
-  }, [index]);
+  }, [transaction.id]);
 
   const handleDelete = () => {
-    deleteTransaction(index);
+    deleteTransaction(transaction.id);
     history.push("/transactions");
   };
   return (
@@ -33,7 +32,7 @@ const TransDetail = ({ deleteTransaction }) => {
         <Link to={`/transactions`}>
           <button>Back</button>
         </Link>
-        <Link to={`/transactions/${index}/edit`}>
+        <Link to={`/transactions/${transaction.id}/edit`}>
           <button>Edit</button>
         </Link>
         <button onClick={handleDelete}>Delete</button>
