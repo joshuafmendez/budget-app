@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { apiURL } from "../util/apiURL";
+import "../App.css";
 
 const API = apiURL();
 
@@ -28,8 +29,8 @@ const TransDetail = ({ deleteTransaction }) => {
     history.push("/transactions");
   };
   return (
-    <section>
-      <div>
+    <section className="detail-view">
+      <div className="buttons">
         <Link to={`/transactions`}>
           <button>Back</button>
         </Link>
@@ -40,13 +41,15 @@ const TransDetail = ({ deleteTransaction }) => {
       </div>
       <div className="Card">
         <h3>{transaction.date}</h3>
-        <p>
-          {transaction.name} {transaction.amount}
-        </p>
-        <p>From: {transaction.from}</p>
+        <div className="detail-section">
+          <p>
+            {transaction.name} {transaction.amount}
+          </p>
+          <p>From: {transaction.from}</p>
+        </div>
         <div className="notes-section">
-          <p>Notes:</p>
-          <p>{transaction.notes}</p>
+          Notes:<br></br>
+          {transaction.notes}
         </div>
       </div>
     </section>

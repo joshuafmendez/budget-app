@@ -1,13 +1,17 @@
 import { NavLink } from "react-router-dom";
+import "../App.css";
 
 const NavBar = () => {
-    return (
-        <nav>
-            {/* <NavLink exact to="/">Home</NavLink> */}
-            <NavLink to="/transactions">Budget App</NavLink>
-            <NavLink to="/transactions/new">New Transaction</NavLink>
-        </nav>
-    )
-}
+  return (
+    <nav>
+      <NavLink to="/transactions">
+        <div className="view-account">Budget App</div>
+      </NavLink>
+      <NavLink to="/transactions/new">
+        <div className="new-transaction-link">New Transaction</div>
+      </NavLink>
+    </nav>
+  );
+};
 
 export default NavBar;

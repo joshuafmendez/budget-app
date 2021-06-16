@@ -16,7 +16,7 @@ const Index = ({ transactions }) => {
   }, [transactions]);
 
   return (
-    <section>
+    <section className="account-view">
         
       <h1>Bank Account Total: {sum}</h1>
       <Transactions transactions={transactions} />

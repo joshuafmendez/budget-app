@@ -1,8 +1,10 @@
 import Transaction from "./Transaction";
 
+import "../App.css";
+
 const Transactions = ({ transactions }) => {
   return (
-    <section>
+    <section className="account-table">
       <table>
         {transactions.map((transaction, index) => {
           return (

@@ -4,9 +4,13 @@ const Transaction = ({ transaction, index }) => {
   return (
     <tbody>
       <tr>
-        <td>{transaction.date}</td>
-        <td><Link to={`/transactions/${index}`}>{transaction.name}</Link></td>
-        <td>{transaction.amount}</td>
+        <td className="trans-date">{transaction.date}</td>
+        <td className="trans-name">
+          <Link to={`/transactions/${index}`}>
+            <div className="trans-click-area">{transaction.name}</div>
+          </Link>
+        </td>
+        <td className="trans-amount">{transaction.amount}</td>
       </tr>
     </tbody>
   );

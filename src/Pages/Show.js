@@ -1,4 +1,6 @@
 import TransDetail from "../Components/TransDetail";
+import "../App.css";
+
 
 const Show = ({deleteTransaction}) => {
   return (
