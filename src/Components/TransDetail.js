@@ -38,9 +38,16 @@ const TransDetail = ({ deleteTransaction }) => {
         </Link>
         <button onClick={handleDelete}>Delete</button>
       </div>
-      <div>
-        {transaction.date} {transaction.name} {transaction.amount}{" "}
-        {transaction.from} {transaction.notes}
+      <div className="Card">
+        <h3>{transaction.date}</h3>
+        <p>
+          {transaction.name} {transaction.amount}
+        </p>
+        <p>From: {transaction.from}</p>
+        <div className="notes-section">
+          <p>Notes:</p>
+          <p>{transaction.notes}</p>
+        </div>
       </div>
     </section>
   );

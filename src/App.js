@@ -7,6 +7,7 @@ import Index from "./Pages/Index";
 import New from "./Pages/New";
 import Show from "./Pages/Show";
 import Edit from "./Pages/Edit";
+import ComingSoon from "./Pages/ComingSoon";
 import { apiURL } from "./util/apiURL";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -60,9 +61,11 @@ const App = () => {
       console.log(err);
     }
   };
+
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <div className="App">
       <NavBar />
@@ -80,7 +83,10 @@ const App = () => {
           <Show deleteTransaction={deleteTransaction} />
         </Route>
         <Route exact path="/transactions/:index/edit">
-          <Edit updateTransaction={updateTransaction}/>
+          <Edit updateTransaction={updateTransaction} />
+        </Route>
+        <Route exact path="/coming-soon">
+          <ComingSoon />
         </Route>
         <Route path="*">
           <FoF />
