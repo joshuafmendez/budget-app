@@ -47,31 +47,13 @@ const App = () => {
 
   // Update a specific transaction
   const updateTransaction = async (updatedTrans, id) => {
-    // console.log(updatedTrans)
     try {
       const res = await axios.put(`${API}/transactions/${id}`, updatedTrans);
-      // debugger
-      // const editedTrans = transactions.map(transaction => {
-      //   if(transaction.id === id){
-      //     return updatedTrans;
-      //   }
-      //   return transaction;
-      // });
       setTransactions(res.data.transactions);
     } catch (error) {
       console.log(error);
     }
   };
-  // const updateTransaction = async (updatedTrans, id) => {
-  //   try {
-  //     await axios.put(`${API}/transactions/${id}`, updatedTrans);
-  //     const editedTrans = [...transactions];
-  //     editedTrans[id] = updatedTrans;
-  //     setTransactions(editedTrans);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const fetchData = async () => {
     try {

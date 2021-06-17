@@ -12,7 +12,7 @@ const TransEditForm = ({ updateTransaction }) => {
     from: "",
     date: "",
     name: "",
-    amount: 0,
+    amount: "",
     notes: "",
   });
 
