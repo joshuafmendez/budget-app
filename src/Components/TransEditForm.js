@@ -6,7 +6,7 @@ import { apiURL } from "../util/apiURL";
 const API = apiURL();
 
 const TransEditForm = ({ updateTransaction }) => {
-  let { index } = useParams();
+  let { id } = useParams();
   let history = useHistory();
   const [transaction, setTransaction] = useState({
     from: "",
@@ -26,21 +26,21 @@ const TransEditForm = ({ updateTransaction }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateTransaction(transaction, index);
-    history.push(`/transactions/${index}`);
+    await updateTransaction(transaction, id);
+    history.push(`/transactions/${id}`);
   };
 
   useEffect(() => {
     const fetchTrans = async () => {
       try {
-        const res = await axios.get(`${API}/transactions/${index}`);
+        const res = await axios.get(`${API}/transactions/${id}`);
         setTransaction(res.data);
       } catch (err) {
         console.log(err);
       }
     };
     fetchTrans();
-  }, [index]);
+  }, [id]);
 
   return (
     <div className="Edit">

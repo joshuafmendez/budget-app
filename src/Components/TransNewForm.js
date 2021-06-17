@@ -10,7 +10,7 @@ const TransNewForm = (props) => {
     from: "",
     date: "",
     name: "",
-    amount: 0,
+    amount: "",
     notes: ""
   });
 

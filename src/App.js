@@ -14,6 +14,10 @@ import { useEffect, useState } from "react";
 
 const API = apiURL();
 
+// test for routes and front end
+// style components library
+// possible database
+
 const App = () => {
   const [transactions, setTransactions] = useState([]);
 
@@ -30,11 +34,11 @@ const App = () => {
   };
 
   // Deletes a specific transaction
-  const deleteTransaction = async (index) => {
+  const deleteTransaction = async (id) => {
     try {
-      await axios.delete(`${API}/transactions/${index}`);
+      await axios.delete(`${API}/transactions/${id}`);
       const newTransaction = [...transactions];
-      newTransaction.splice(index, 1);
+      newTransaction.splice(id, 1);
       setTransactions(newTransaction);
     } catch (err) {
       console.log(err);
@@ -42,16 +46,32 @@ const App = () => {
   };
 
   // Update a specific transaction
-  const updateTransaction = async (updatedTrans, index) => {
+  const updateTransaction = async (updatedTrans, id) => {
+    // console.log(updatedTrans)
     try {
-      await axios.put(`${API}/transactions/${index}`, updatedTrans);
-      const editedTrans = [...transactions];
-      editedTrans[index] = updatedTrans;
-      setTransactions(editedTrans);
+      const res = await axios.put(`${API}/transactions/${id}`, updatedTrans);
+      // debugger
+      // const editedTrans = transactions.map(transaction => {
+      //   if(transaction.id === id){
+      //     return updatedTrans;
+      //   }
+      //   return transaction;
+      // });
+      setTransactions(res.data.transactions);
     } catch (error) {
       console.log(error);
     }
   };
+  // const updateTransaction = async (updatedTrans, id) => {
+  //   try {
+  //     await axios.put(`${API}/transactions/${id}`, updatedTrans);
+  //     const editedTrans = [...transactions];
+  //     editedTrans[id] = updatedTrans;
+  //     setTransactions(editedTrans);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const fetchData = async () => {
     try {
@@ -79,10 +99,10 @@ const App = () => {
         <Route exact path="/transactions/new">
           <New addTransaction={addTransaction} />
         </Route>
-        <Route exact path="/transactions/:index">
+        <Route exact path="/transactions/:id">
           <Show deleteTransaction={deleteTransaction} />
         </Route>
-        <Route exact path="/transactions/:index/edit">
+        <Route exact path="/transactions/:id/edit">
           <Edit updateTransaction={updateTransaction} />
         </Route>
         <Route exact path="/coming-soon">

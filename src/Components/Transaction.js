@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 
-const Transaction = ({ transaction, index }) => {
+const Transaction = ({ transaction }) => {
+  const { date, id, name, amount } = transaction;
   return (
     <tbody>
       <tr>
-        <td className="trans-date">{transaction.date}</td>
+        <td className="trans-date">{date}</td>
         <td className="trans-name">
-          <Link to={`/transactions/${index}`}>
-            <div className="trans-click-area">{transaction.name}</div>
+          <Link to={`/transactions/${id}`}>
+            <div className="trans-click-area">{name}</div>
           </Link>
         </td>
-        <td className="trans-amount">{transaction.amount}</td>
+        <td className="trans-amount">{amount}</td>
       </tr>
     </tbody>
   );
