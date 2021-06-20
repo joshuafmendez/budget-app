@@ -45,7 +45,7 @@ const TransNewForm = (props) => {
           value={transaction.date}
           type="date"
           onChange={handleTextChange}
-          placeholder="DD/MM/YYYY"
+          placeholder="yyyy/MM/dd"
           required
           pattern="\d{4}-\d{2}-\d{2}"
         />
