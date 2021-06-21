@@ -38,7 +38,10 @@ const App = () => {
     try {
       await axios.delete(`${API}/transactions/${id}`);
       const newTransaction = [...transactions];
-      newTransaction.splice(id, 1);
+      const deleted = newTransaction.findIndex(trans => {
+        return trans.id === id;
+      })
+      newTransaction.splice(deleted, 1);
       setTransactions(newTransaction);
     } catch (err) {
       console.log(err);
